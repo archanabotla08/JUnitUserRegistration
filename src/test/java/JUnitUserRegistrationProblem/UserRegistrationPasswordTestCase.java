@@ -3,6 +3,7 @@ package JUnitUserRegistrationProblem;
 import static org.junit.Assert.*;
 
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,10 +20,20 @@ public class UserRegistrationPasswordTestCase {
 	}
 	@Test
 	public void UserRegistrationPassword_thenAssertionHappy() {
-		assertEquals(true,user.UserRegistrationPassword("A1&oichana"));
+		try {
+			assertEquals(true,user.UserRegistrationPassword("A1&oichana"));
+		}catch(UserRegistrationCustomException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	@Test
 	public void UserRegistrationPassword_thenAssertionSad() {
-		assertEquals(true,user.UserRegistrationPassword("A1oiana"));
+		try {
+			assertEquals(true,user.UserRegistrationPassword("A1oiana"));
+		}catch(UserRegistrationCustomException e) {
+			e.printStackTrace();
+		}
+		
 	}
 }

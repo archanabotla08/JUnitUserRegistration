@@ -21,11 +21,21 @@ public class UserRegistrationMobileNumberTestCase {
 	}
 	@Test
 	public void UserRegistrationMobileNumber_thenAssertionHappy() {
-		assertEquals(true,user.UserRegistrationMobileNumber("918989878761"));
+		try {
+			assertEquals(true,user.UserRegistrationMobileNumber("918989878761"));
+		}catch(UserRegistrationCustomException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	@Test
 	public void UserRegistrationMobileNumber_thenAssertionSad() {
-		assertEquals(true,user.UserRegistrationMobileNumber("91 8989898"));
+		try {
+			assertEquals(true,user.UserRegistrationMobileNumber("91 8989898"));
+		}catch(UserRegistrationCustomException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }

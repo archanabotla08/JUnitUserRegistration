@@ -62,7 +62,12 @@ public class UserRegistrationParameterizedEmailTestCase {
 	}
 	@Test
 	public void UserRegistrationEmail_thenAssertionHappy() {
-		assertEquals(true,user.UserRegistrationEmail(email));
+		try {
+			assertEquals(true,user.UserRegistrationEmail(email));
+		}catch(UserRegistrationCustomException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	

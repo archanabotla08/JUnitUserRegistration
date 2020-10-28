@@ -21,11 +21,21 @@ public class UserRegistrationEmailTestCase {
 	}
 	@Test
 	public void UserRegistrationEmail_thenAssertionHappy() {
-		assertEquals(true,user.UserRegistrationEmail("abc@gmail.com"));
+		try {
+			assertEquals(true,user.UserRegistrationEmail("abc@gmail.com"));
+		}catch(UserRegistrationCustomException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	@Test
 	public void UserRegistrationEmail_thenAssertionSad() {
-		assertEquals(true,user.UserRegistrationEmail("abc.123.oi@gmail.com"));
+		try {
+			assertEquals(true,user.UserRegistrationEmail("abc.123.oi@gmail.com"));
+		}catch(UserRegistrationCustomException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }

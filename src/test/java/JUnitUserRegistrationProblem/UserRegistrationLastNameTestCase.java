@@ -21,11 +21,21 @@ public class UserRegistrationLastNameTestCase {
 	}
 	@Test
 	public void UserRegistrationLastName_thenAssertionHappy() {
-		assertEquals(true,user.UserRegistrationLastName("Botla"));
+		try {
+			assertEquals(true,user.UserRegistrationLastName("Botla"));
+		}catch(UserRegistrationCustomException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	@Test
 	public void UserRegistrationLastName_thenAssertionSad() {
-		assertEquals(true,user.UserRegistrationLastName("botla"));
+		try {
+			assertEquals(true,user.UserRegistrationLastName("botla"));
+		}catch(UserRegistrationCustomException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }
