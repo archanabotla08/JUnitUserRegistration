@@ -2,6 +2,11 @@ package JUnitUserRegistrationProblem;
 
 import java.util.regex.Pattern;
 
+@FunctionalInterface
+interface UserRegister{
+	public boolean compare(String a,String b);
+}
+
 public class UserRegistration {
 	
 	private static final String FIRSTNAME_PATTERN = "^[A-Z]{1}[a-z]{2,}";
@@ -10,35 +15,40 @@ public class UserRegistration {
 	private static final String MOBILENUMBER_PATTERN = "^(91)[7-9][0-9]{9}$";
 	private static final String PASSWORD_PATTERN = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
 	
-	public boolean UserRegistrationFirstName(String firstName) throws UserRegistrationCustomException {
-		
-		boolean firstname =  Pattern.matches(FIRSTNAME_PATTERN, firstName);
+
+	public boolean UserRegistrationFirstName(String firstName) throws UserRegistrationCustomException  {
+		UserRegister user = (pattern,inputString) -> Pattern.matches(pattern,inputString);
+		boolean firstname = user.compare(FIRSTNAME_PATTERN, firstName);
 		if(firstname)
-			return Pattern.matches(FIRSTNAME_PATTERN, firstName);
-		throw new UserRegistrationCustomException("Please enter proper First name");
+		return firstname;
+		throw new UserRegistrationCustomException("Please enter proper First name")	;
 	}
 	public boolean UserRegistrationLastName(String lastName) throws UserRegistrationCustomException {
-		boolean lastname = Pattern.matches(LASTNAME_PATTERN, lastName);
+		UserRegister user = (pattern,inputString) -> Pattern.matches(pattern,inputString);
+		boolean lastname = user.compare(LASTNAME_PATTERN, lastName);
 		if(lastname)
-		return Pattern.matches(LASTNAME_PATTERN, lastName);
+		return lastname;
 		throw new UserRegistrationCustomException("Please enter proper Last name");
 	}
 	public boolean UserRegistrationEmail(String email) throws UserRegistrationCustomException {
-		boolean emailB = Pattern.matches(EMAIL_PATTERN, email);
+		UserRegister user = (pattern,inputString) -> Pattern.matches(pattern,inputString);
+		boolean emailB = user.compare(EMAIL_PATTERN, email);
 		if(emailB)
-		return Pattern.matches(EMAIL_PATTERN, email);
+		return emailB;
 		throw new UserRegistrationCustomException("Please enter proper Email");
 	}
 	public boolean UserRegistrationMobileNumber(String number) throws UserRegistrationCustomException {
-		boolean numberB = Pattern.matches(MOBILENUMBER_PATTERN, number);
+		UserRegister user = (pattern,inputString) -> Pattern.matches(pattern,inputString);
+		boolean numberB = user.compare(MOBILENUMBER_PATTERN, number);
 		if(numberB)
-		return Pattern.matches(MOBILENUMBER_PATTERN, number);
+		return numberB;
 		throw new UserRegistrationCustomException("Please enter proper Number");
 	}
 	public boolean UserRegistrationPassword(String password) throws UserRegistrationCustomException {
-		boolean passwordB = Pattern.matches(PASSWORD_PATTERN, password);
+		UserRegister user = (pattern,inputString) -> Pattern.matches(pattern,inputString);
+		boolean passwordB = user.compare(PASSWORD_PATTERN, password);
 		if(passwordB)
-		return Pattern.matches(PASSWORD_PATTERN, password);
+		return passwordB;
 		throw new UserRegistrationCustomException("Please enter proper Password");
 	}
 	
